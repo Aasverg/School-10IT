@@ -1,16 +1,17 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+8 to toggle the breakpoint.
+class Student:
+    def __init__(self, id, name, school, _class, score):
+        self.id = id
+        self.name = name
+        self.school = school
+        self._class = _class
+        self.score = score
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+f = open('students.txt', 'r')
+f.readline()
+students = []
+for i in f:
+    students.append(Student(*i.split(',')))
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for i in range(len(students)):
+    pass
