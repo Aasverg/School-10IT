@@ -31,4 +31,4 @@ for i in range(len(students)):
     if students[i].score == -1: students[i].score = 'None'
 
 for i in range(1, 4):
-    print(f"{i} место: {students[i-1].name}, {students[i-1].score}")
+    print(f"{i} место: {students[i-1].name}")
