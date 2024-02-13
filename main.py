@@ -1,4 +1,15 @@
+import random
+
 class Student:
+    def generatePassword(self):
+        alph = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+        password = ''
+        for i in range(8):
+            password += random.choice(alph)
+        return password
+    def generateLogin(self, name):
+        FIO = name.split()
+        return FIO[0] + '_' + FIO[1][0] + FIO[2][0]
     def __init__(self, id, name, titleProject_id, _class, score):
         self.id = int(id)
         self.name = name
@@ -8,6 +19,8 @@ class Student:
             self.score = 0
         else:
             self.score = int(score)
+        self.login = self.generateLogin(name)
+        self.password = self.generatePassword()
 
 def projectInfo(students, id):
     for student in students:
@@ -15,10 +28,10 @@ def projectInfo(students, id):
             print(f"Проект № {id} делал: {student.name}, он(а) получил(а) оценку - {student.score}.")
             break
 
-f = open('students.txt', 'r', encoding='utf-8')
-f.readline()
+fin = open('students.txt', 'r', encoding='utf-8')
+fin.readline()
 students = []
-for i in f:
+for i in fin:
     students.append(Student(*i.strip().split(',')))
 
 for i in range(1, len(students)):
@@ -34,3 +47,10 @@ for i in range(1, 4):
 
 print()
 projectInfo(students, 304)
+
+
+fout = open('students_password.csv', 'w')
+fout.write('id,Name,titleProject_id,class,score,login,password\n')
+for student in students:
+    fout.write(f'{student.id},{student.name},{student.titleProject_id},{student._class},{student.score},{student.login},{student.password}\n')
+fout.close()
