@@ -12,7 +12,7 @@ class Student:
 def projectInfo(students, id):
     for student in students:
         if student.titleProject_id == id:
-            print(f"Проект №{id}:\nУченик: {student.name}.\nКласс: {student._class}.\nОценка за проект: {student.score}.")
+            print(f"Проект № {id} делал: {student.name}, он(а) получил(а) оценку - {student.score}.")
             break
 
 f = open('students.txt', 'r', encoding='utf-8')
